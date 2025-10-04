@@ -88,7 +88,6 @@ const TypingGame: React.FC = () => {
       if (nextIndex < POKEMON_PHRASES.length) {
         setCurrentPhrase(POKEMON_PHRASES[nextIndex]);
       } else {
-        // Handle the case when we've used all phrases
         endGame();
       }
       setUserInput('');
@@ -117,7 +116,7 @@ const TypingGame: React.FC = () => {
 
   const renderPhrase = () => {
     return currentPhrase.split('').map((char, index) => {
-      let className = 'text-2xl font-medium ';
+      let className = 'text-lg sm:text-2xl font-medium ';
 
       if (index < userInput.length) {
         className += userInput[index] === char ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100';
@@ -142,16 +141,16 @@ const TypingGame: React.FC = () => {
   if (showNameInput) {
     return (
       <PokemonTheme>
-        <div className="min-h-screen flex items-center justify-center p-8 ">
-          <div className="bg-white/60 rounded-3xl shadow-2xl p-12 max-w-3xl w-full">
-            <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
+          <div className="bg-white/60 rounded-3xl shadow-2xl p-6 max-w-3xl w-full">
+            <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 sm:mb-8 text-gray-800">
               {getWPM() > 60
                 ? "Amazing Speed, Master Trainer!"
                 : getWPM() > 40
                   ? "Great Job, Trainer!"
                   : getWPM() != 0 ? "Nice Effort, Trainer!" : "No Effort, Trainer!"}
             </h2>
-            <p className="text-xl text-center mb-6 text-gray-600">
+            <p className="text-base sm:text-xl text-center mb-4 sm:mb-6 text-gray-600">
               {getWPM() > 50 && getAccuracy() > 95
                 ? "You're typing faster than a Rapidash!"
                 : getWPM() > 30 && getAccuracy() > 85
@@ -172,22 +171,22 @@ const TypingGame: React.FC = () => {
               value={playerName}
               onChange={(e) => setPlayerName(e.target.value)}
               placeholder="Enter your name..."
-              className="w-full p-4 mt-10 border-2 border-gray-300 rounded-xl mb-4 text-lg focus:border-blue-500 focus:outline-none"
+              className="w-full p-3 sm:p-4 mt-6 sm:mt-10 border-2 border-gray-300 rounded-xl mb-4 text-base sm:text-lg focus:border-blue-500 focus:outline-none"
               onKeyPress={(e) => e.key === 'Enter' && saveScore()}
               autoFocus
             />
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={saveScore}
                 disabled={!playerName.trim()}
-                className="flex-1 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform disabled:opacity-50"
+                className="flex-1 bg-gradient-to-r from-red-500 to-yellow-500 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:scale-105 transition-transform disabled:opacity-50"
               >
                 Save Score
               </button>
               <button
                 onClick={initGame}
-                className="flex-1 bg-gray-500 text-white py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform"
+                className="flex-1 bg-gray-500 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:scale-105 transition-transform"
               >
                 Skip
               </button>
@@ -200,8 +199,8 @@ const TypingGame: React.FC = () => {
 
   return (
     <PokemonTheme>
-      <div className=" flex items-center justify-center">
-        <div className="px-10 py-4 max-w-3xl w-full">
+      <div className="flex items-center justify-center">
+        <div className="px-4 sm:px-10 py-4 max-w-3xl w-full">
           <Stats
             timeLeft={timeLeft}
             wpm={getWPM()}
@@ -212,22 +211,22 @@ const TypingGame: React.FC = () => {
         </div>
       </div>
 
-      <div className={`bg-white/60 ${gameStarted ? 'backdrop-blur-md' : ''} rounded-3xl shadow-2xl p-12 border-2 border-white/50`}>
+      <div className={`bg-white/60 ${gameStarted ? 'backdrop-blur-md' : ''} rounded-3xl shadow-2xl p-6 sm:p-12 border-2 border-white/50`}>
         {!gameStarted ? (
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 font-tokyo">Ready to Catch 'Em All?</h2>
-            <p className="text-xl text-gray-700 mb-8">Type the Pokemon phrases as fast as you can!</p>
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">Ready to Catch 'Em All?</h2>
+            <p className="text-base sm:text-xl text-gray-700 mb-6 sm:mb-8">Type the Pokemon phrases as fast as you can!</p>
             <button
               onClick={startGame}
-              className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:scale-110 transition-transform shadow-lg"
+              className="bg-gradient-to-r from-red-500 to-yellow-500 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-2xl text-xl sm:text-2xl font-bold hover:scale-110 transition-transform shadow-lg"
             >
               START TYPING
             </button>
           </div>
         ) : (
           <div>
-            <div className="bg-gray-100 rounded-2xl p-8 mb-6 min-h-[120px] flex items-center justify-center">
-              <div className="text-center leading-relaxed">
+            <div className="bg-gray-100 rounded-2xl p-4 sm:p-8 mb-6 min-h-[80px] sm:min-h-[120px] flex items-center justify-center">
+              <div className="text-center leading-relaxed break-words">
                 {renderPhrase()}
               </div>
             </div>
@@ -237,7 +236,7 @@ const TypingGame: React.FC = () => {
               type="text"
               value={userInput}
               onChange={handleInput}
-              className="w-full p-6 text-2xl border-4 border-blue-300 rounded-2xl focus:border-blue-500 focus:outline-none"
+              className="w-full p-4 sm:p-6 text-lg sm:text-2xl border-4 border-blue-300 rounded-2xl focus:border-blue-500 focus:outline-none"
               placeholder="Start typing..."
               disabled={gameEnded}
             />
@@ -245,9 +244,9 @@ const TypingGame: React.FC = () => {
             <div className="mt-6 flex justify-center">
               <button
                 onClick={initGame}
-                className="bg-gray-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-600 transition-colors flex items-center gap-2"
+                className="bg-gray-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-bold hover:bg-gray-600 transition-colors flex items-center gap-2 text-sm sm:text-base"
               >
-                <RotateCcw className="w-5 h-5" />
+                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
                 Restart
               </button>
             </div>
@@ -256,13 +255,13 @@ const TypingGame: React.FC = () => {
       </div>
 
       {leaderboard.length > 0 && !gameStarted && (
-        <div className="mt-8 bg-white/60 rounded-3xl shadow-2xl p-8">
-          <h3 className="text-3xl font-bold text-gray-800 mb-4 text-center">Top Trainers</h3>
+        <div className="mt-6 sm:mt-8 bg-white/60 rounded-3xl shadow-2xl p-4 sm:p-8">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center">Top Trainers</h3>
           <div className="space-y-2">
             {leaderboard.slice(0, 5).map((entry, index) => (
               <div key={index} className="flex justify-between items-center p-3 rounded-xl">
-                <span className="font-bold text-lg">{index + 1}. {entry.name}</span>
-                <span className="text-blue-600 font-bold">{entry.wpm} WPM</span>
+                <span className="font-bold text-base sm:text-lg truncate mr-2">{index + 1}. {entry.name}</span>
+                <span className="text-blue-600 font-bold text-sm sm:text-base whitespace-nowrap">{entry.wpm} WPM</span>
               </div>
             ))}
           </div>
