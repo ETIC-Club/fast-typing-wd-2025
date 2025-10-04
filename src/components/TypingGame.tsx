@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, RotateCcw } from 'lucide-react';
-import { getRandomPhrase } from '@/lib/phrases';
+import  POKEMON_PHRASES  from '@/lib/phrases';
 import { calculateWPM, calculateAccuracy, LeaderboardEntry } from '@/lib/utils';
 import Stats from './Stats';
 import Leaderboard from './Leaderboard';
@@ -24,7 +24,7 @@ const TypingGame: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const initGame = () => {
-    setCurrentPhrase(getRandomPhrase());
+    setCurrentPhrase(POKEMON_PHRASES[0]);
     setUserInput('');
     setGameStarted(false);
     setGameEnded(false);
@@ -84,7 +84,13 @@ const TypingGame: React.FC = () => {
 
     if (value === currentPhrase) {
       setCompletedPhrases(completedPhrases + 1);
-      setCurrentPhrase(getRandomPhrase());
+      const nextIndex = completedPhrases + 1;
+      if (nextIndex < POKEMON_PHRASES.length) {
+        setCurrentPhrase(POKEMON_PHRASES[nextIndex]);
+      } else {
+        // Handle the case when we've used all phrases
+        endGame();
+      }
       setUserInput('');
     }
   };

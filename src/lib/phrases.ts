@@ -11,21 +11,19 @@ export const POKEMON_PHRASES = [
   "Gyarados rampages with rage",
   "Alakazam has incredible IQ",
   "Machamp has four powerful arms",
-  "Lapras swims across oceans",
-  "Articuno freezes everything",
-  "Zapdos controls lightning",
-  "Moltres burns with fire",
-  "Jigglypuff sings a lullaby",
-  "Meowth speaks human language",
-  "Psyduck has a headache",
-  "Growlithe is loyal and brave",
-  "Arcanine runs with grace",
-  "Ditto transforms perfectly",
-  "Mew is incredibly rare",
-  "Raichu evolves from Pikachu",
-  "Blastoise has powerful cannons"
+  // "Lapras swims across oceans",
+  // "Articuno freezes everything",
+  // "Zapdos controls lightning",
+  // "Moltres burns with fire",
+  // "Jigglypuff sings a lullaby",
+  // "Meowth speaks human language",
+  // "Psyduck has a headache",
+  // "Growlithe is loyal and brave",
+  // "Arcanine runs with grace",
+  // "Ditto transforms perfectly",
+  // "Mew is incredibly rare",
+  // "Raichu evolves from Pikachu",
+  // "Blastoise has powerful cannons"
 ];
 
-export const getRandomPhrase = (): string => {
-  return POKEMON_PHRASES[Math.floor(Math.random() * POKEMON_PHRASES.length)];
-};
+export default POKEMON_PHRASES;

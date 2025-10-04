@@ -62,7 +62,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ entries, onPlayAgain }) => {
 
           <button
             onClick={onPlayAgain}
-            className="w-full mt-8 text-blue-600 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg"
+            className="w-full mt-8 text-blue-600 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2"
           >
             <RotateCcw className="w-5 h-5 text-blue-600" />
             Play Again
