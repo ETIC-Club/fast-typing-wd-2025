@@ -4,14 +4,6 @@ export interface GameStats {
   timeElapsed: number;
 }
 
-export interface LeaderboardEntry {
-  name: string;
-  wpm: number;
-  accuracy: number;
-  phrases: number;
-  timestamp: number;
-}
-
 export const calculateWPM = (correctChars: number, timeElapsed: number): number => {
   const minutes = timeElapsed / 60;
   return minutes > 0 ? Math.round((correctChars / 5) / minutes) : 0;
@@ -19,12 +11,6 @@ export const calculateWPM = (correctChars: number, timeElapsed: number): number 
 
 export const calculateAccuracy = (correctChars: number, totalChars: number): number => {
   return totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
-};
-
-export const sortLeaderboard = (leaderboard: LeaderboardEntry[]): LeaderboardEntry[] => {
-  return [...leaderboard]
-    .sort((a, b) => b.wpm - a.wpm)
-    .slice(0, 10);
 };
 
 export const getMedalEmoji = (position: number): string => {

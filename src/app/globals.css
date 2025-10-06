@@ -9,11 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body,  button, textarea, select ,h1{
+html, body,  button, textarea, select ,h1, h2,h3{
   font-family: 'Tokyo', sans-serif;
 }
 
-p ,h2, div, input {
+p , div, input {
   font-family: 'Centery', serif; /* Use Centery for paragraphs */
 }
 

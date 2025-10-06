@@ -1,0 +1,11 @@
+[build]
+  base = "pokemon-typing"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Next.js specific configuration
+[[plugins]]
+  package = "@netlify/plugin-nextj

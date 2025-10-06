@@ -3,8 +3,8 @@ export const POKEMON_PHRASES = [
   "Charizard soars through the sky",
   "Bulbasaur plants grow stronger",
   "Dragonite flies faster than sound",
-  "Machamp has four powerful arms",
   "Jigglypuff sings a lullaby",
+  "Machamp has four powerful arms",
 ];
 
 export default POKEMON_PHRASES;
